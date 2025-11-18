@@ -69,10 +69,9 @@ https://validation-project-uqvl.onrender.com/api/products
 
 🖼 Przykładowe screenshoty
 
-Formularz dodawania produktu:
+Formularz dodawania produktu: ![Formularz](./screenshots/form.png)  
 
-
-Lista produktów po dodaniu:
+Lista produktów po dodaniu: ![Lista produktów](./screenshots/list.png)
 
 
 ⚠️ Dodaj swoje screenshoty do folderu screenshots i nazwij je form.png oraz list.png lub zmień ścieżki w README.
