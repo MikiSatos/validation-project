@@ -1,16 +1,30 @@
-const productService = require('../services/productService');
+let products = []; // простой массив для хранения продуктов
+
+exports.getAllProducts = (req, res) => {
+  res.json(products);
+};
 
 exports.createProduct = (req, res) => {
-    const product = productService.create(req.body);
-    res.status(201).json(product);
+  const product = req.body;
+  product.id = products.length + 1; // простая генерация id
+  products.push(product);
+  res.status(201).json(product);
 };
 
 exports.updateProduct = (req, res) => {
-    const updated = productService.update(req.params.id, req.body);
-    res.json(updated);
+  const id = parseInt(req.params.id);
+  const index = products.findIndex(p => p.id === id);
+  if (index === -1) return res.status(404).json({ error: 'Product not found' });
+
+  products[index] = { ...products[index], ...req.body };
+  res.json(products[index]);
 };
 
 exports.deleteProduct = (req, res) => {
-    productService.delete(req.params.id);
-    res.status(204).send();
+  const id = parseInt(req.params.id);
+  const index = products.findIndex(p => p.id === id);
+  if (index === -1) return res.status(404).json({ error: 'Product not found' });
+
+  const deleted = products.splice(index, 1);
+  res.json(deleted[0]);
 };
