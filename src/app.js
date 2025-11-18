@@ -11,7 +11,6 @@ app.use(express.json());
 app.use(express.static('public'));
 
 // Подключаем роуты для API
-// Рекомендую оставить /api/products, чтобы отделять API от фронтенда
 app.use('/api/products', productsRouter);
 
 // Middleware для обработки ошибок
